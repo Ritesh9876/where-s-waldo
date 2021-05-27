@@ -1,38 +1,134 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+body{
+  font-family: 'Reggae One', cursive;
+}
+header{
+  height:10vh;
+  width:100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo{
+  flex:0;
+  text-align: right;
+  height:100%;
+  }
+.logo img{
+  width:80px;
+  height:100%;
+}
+.logo-name{
+  font-size:25px;
+  font-weight: 800;
+}
+.logo-name span{
+  color:rgb(40, 40, 253)
+}
+.logo-name{
+  color:rgb(228, 19, 19);
+}
+.Alllevels{
+  margin-top:50px;
+  display: flex;
+  justify-content: space-between;
+}
+.Alllevels a{
+  display: block;
+  text-decoration: none;
+  color:black;
+  width:30%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.level img{
+  width:100%;
+  
+}
+.level-des{
+  display: flex;
+  height:5vh;
+  align-items: center;
+  justify-content: space-between;
+}
+.level-des p{
+height: 100%;
+
+}
+.characters{
+  height: 100%;
+  text-align: right;
+  flex:0.9;
+  display:flex;
+  justify-content: flex-end;
+}
+.character{
+  height: 100%;
+  margin-right:10px;
+  flex:0;
+  text-align: right;
+}
+.character img{
+  height: 100%;
+  width:40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+@media screen and (max-width:730px){
+  .Alllevels{
+flex-direction: column;
+align-items: center;
+  }
+  .Alllevels a{
+    width:90%;
+    margin-bottom: 30px;
   }
 }
+.game-characters{
+  height:5vh;
+  width:100vw;
+}
+.game-characters img{
+  height: 100%;
+}
+.game-grid{
+  margin-top:10px;
+  position: relative;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.game-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.game-grid img{
+  width:100%;
+  display: block;
+}
+.dropdown{
+  display: none;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:5;
+  background-color: white;
+  border-radius: 5px;
+
+}
+.dropdown-name{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dropdown a{
+  color:black;
+  display: block;
+  text-decoration: none;
 }
