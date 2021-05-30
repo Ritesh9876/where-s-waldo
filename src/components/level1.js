@@ -5,13 +5,14 @@ import waldo3 from '../images/waldo-3.jpg'
 import smallWaldo from '../images/small-waldo.png'
 import wizardlogo from  '../images/wizardLogo.jpg'
 import oldawlogo from '../images/oldaw.jpg'
+import Popup from './Popup'
 import { firestore } from '../firebase';
-import userEvent from '@testing-library/user-event'
+import {Link} from 'react-router-dom'
 
 function Level1({match}){
 
-let timetaken=null;
-console.log("start ",timetaken,match.params.id)
+let timetaken=useRef(null)
+const [trigger,settrigger]=useState(false)
 let wloc=useRef([])
 let oloc=useRef([])
 let wizloc=useRef([])
@@ -19,6 +20,8 @@ let chararray=[]
 let dropdownName=[]
 let winncheck=useRef([])
 let levimage=""
+let t1=null
+
 if(match.params.id==="1"){
 levimage=waldo1
 }else if(match.params.id==="2"){
@@ -38,6 +41,7 @@ useEffect(()=>{
       for(const doc of levelinfo.docs){
         wloc.current=[doc.data().xloc,doc.data().yloc]
         console.log(wloc.current)
+        t1=performance.now()
       }
     }else if(id===2){
       let level= await firestore.collection("lev2")
@@ -46,6 +50,7 @@ useEffect(()=>{
        wloc.current=doc.data().wloc
         oloc.current=doc.data().oloc
       }
+      t1=performance.now()
     }else if(id===3){
       console.log("getting locations",id)
       let level= await firestore.collection("lev3")
@@ -55,13 +60,13 @@ useEffect(()=>{
          oloc.current=doc.data().oloc
          wizloc.current=doc.data().wizloc
        }
+       t1=performance.now()
     }
     
   }
   Caller(parseInt(match.params.id))
 },[])
 
-const t1=performance.now()
 
   function winnalert(e){
     let clickedname=e.target.innerHTML
@@ -70,8 +75,10 @@ const t1=performance.now()
       if(array.length===0){
         array.push(clickedname)
         let t2=performance.now()
+        settrigger(true)
+        timetaken.current=(Math.round(t2-t1))/1000
         alert(array)
-        alert(t2-t1)
+        alert(timetaken.current)
       }
 
     }else if(match.params.id==="2"){
@@ -80,8 +87,10 @@ const t1=performance.now()
       }else if((array.includes("waldo") && clickedname==="oldaw")  || (array.includes("oldaw") && clickedname==="waldo")){
         array.push(clickedname)
         let t2=performance.now()
+        settrigger(true)
+        timetaken.current=(Math.round(t2-t1))/1000
         alert(array)
-        alert(t2-t1)
+        alert(timetaken)
       }
 
     }else if(match.params.id==="3"){
@@ -98,8 +107,10 @@ const t1=performance.now()
         if(!array.includes(clickedname)){
           array.push(clickedname)
           let t2=performance.now()
+          settrigger(true)
+          timetaken.current=(Math.round(t2-t1))/1000
           alert(array)
-          alert(t2-t1)
+          alert(timetaken)
         }
       }
     }
@@ -107,9 +118,7 @@ const t1=performance.now()
 
   function CoordChecker(x,y){
     let allcharcoord=[wloc.current,oloc.current,wizloc.current]
-    console.log(allcharcoord)
    let finalcoords =allcharcoord.filter(loc=>loc.length!==0)
-   console.log(finalcoords)
     finalcoords.forEach((loc,index)=>{
       let Xpresent=[]
       let Ypresent=[]
@@ -174,14 +183,21 @@ CoordChecker(xCoord,yCoord)
     return(
       //  <h1>Narayan Narayan</h1>
       <div className="game-container">
+        <div className="level-header">
         <div className="game-characters">
-          {/* <img src={smallWaldo} alt="" /> */}
           {
             chararray.map((char)=>(
               char
             ))
           }
         </div>
+        <div className="return-button">
+          <Link to="/">
+          <button>Return Home</button>
+          </Link>
+        </div>
+        </div>
+       
         <div className="game-grid">
          <div className="game-image" onClick={(e)=>{
            handleClick(e);
@@ -198,6 +214,7 @@ CoordChecker(xCoord,yCoord)
            </div>
          </div>
         </div>
+        <Popup trigger={trigger} settrigger={settrigger} time={timetaken.current} level={parseInt(match.params.id)}/>
         </div>
     )
 }

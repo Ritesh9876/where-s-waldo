@@ -88,13 +88,31 @@ align-items: center;
     margin-bottom: 30px;
   }
 }
+.level-header{
+  display: flex;
+}
 .game-characters{
   height:5vh;
   width:100vw;
+  flex:1;
+}
+.return-button{
+  flex:0.4;
+text-align: right;
+}
+.return-button button{
+  outline: none;
+  padding:10px 5px;
+  border:none;
+  background-color: rgb(245, 45, 88);
+  border-radius: 5px;
+  color:white;
+  font-size: 15px;
 }
 .game-characters img{
   height: 100%;
 }
+
 .game-grid{
   margin-top:10px;
   position: relative;
@@ -131,4 +149,66 @@ align-items: center;
   color:black;
   display: block;
   text-decoration: none;
+}
+.popup{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100vh;
+  background-color:rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time-display{
+  border-bottom: 1px solid crimson;
+}
+.time-display span{
+  color:crimson;
+}
+.popup-inner{
+  position:relative;
+  padding:32px;
+  width:90%;
+  max-width:640px;
+  height:60vh;
+  background-color: white;
+  border-radius: 20px;
+}
+.popup-inner form{
+  text-align: center;
+  margin-top:6%;
+}
+form h1{
+  margin-bottom: 5px;
+}
+form input[type="text"]{
+  width:50%;
+  outline:none;
+  border:none;
+  border-bottom: 1px solid crimson;
+  padding:6px;
+  margin-bottom: 10px;
+  font-size:20px;
+}
+form input[type="submit"]{
+  margin-top:2%;
+  margin-right:40px;
+  border:none;
+  outline:none;
+  background-color: crimson;
+  color:white;
+  padding:10px;
+  border-radius: 5px;
+}
+.cancel{
+  margin-top:2%;
+  margin-right:10px;
+  border:none;
+  outline:none;
+  background-color: white;
+  color:crimson;
+  padding:10px;
+  border-radius: 5px;
 }
