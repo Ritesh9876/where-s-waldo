@@ -20,23 +20,19 @@ let data=info.data()
 for(let id in data){
     console.log(`${id} : ${data[id].name}  ${data[id].time}`)
     if(data[id].time > time){
-        console.log(data[id].time>time,id)
         change=true
         changetimeat=id
     }
     if(change){break}
 }
 if(change){
-    console.log(change,changetimeat)
     let j=9
   for( j=9;j>changetimeat;j--){
-      console.log(j,changetimeat)
       let k=data[j-1]
       data[j].name=data[j-1].name
       data[j].time=data[j-1].time  
   }
    if(j===parseInt(changetimeat)){
- console.log("j",j,username,time)
    data[changetimeat].name=username
    data[changetimeat].time=time
    }

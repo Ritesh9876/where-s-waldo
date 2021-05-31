@@ -8,8 +8,6 @@ function App() {
     <div className="App">
       <Router>
       <Header/>
-
-
 <Switch>
   <Route path="/" exact component={SelectLevel}  />
   <Route path="/level1/:id"  component={level1} />

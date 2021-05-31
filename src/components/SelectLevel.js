@@ -6,10 +6,11 @@ import waldo3 from '../images/waldo-3.jpg'
 import waldlogo from '../images/small-waldo.png'
 import wizardlogo from  '../images/wizardLogo.jpg'
 import oldawlogo from '../images/oldaw.jpg'
-
+import LeaderBoard from './LeaderBoard'
 function SelectLevel(){
     let id=[1,2,3];
 return(
+    <main>
     <div className="Alllevels">
 <Link to={`/level1/${id[0]}`} >
         <div className="level-1 level" image={waldo1}>
@@ -61,6 +62,8 @@ return(
         </div>
         </Link>
     </div>
+    <LeaderBoard/>
+    </main>
 )
 }
 

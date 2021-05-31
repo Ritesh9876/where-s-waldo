@@ -9,6 +9,7 @@ body{
 header{
   height:10vh;
   width:100vw;
+  margin-top:10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,7 +157,6 @@ text-align: right;
   left:0;
   width:100%;
   height:100vh;
-  background-color:rgba(0,0,0,0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -211,4 +211,53 @@ form input[type="submit"]{
   color:crimson;
   padding:10px;
   border-radius: 5px;
+}
+.LeaderBoard{
+  width:100vw;
+  margin-top:80px;
+}
+.level-board{
+  width:100vw;
+  display: flex;
+  justify-content: space-around;
+  padding:40px;
+}
+.level1-board,.level2-board,.level3-board{
+  flex:0 1 25vw;
+}
+.name{
+  color:crimson
+}
+.time{
+  color:rgb(44, 121, 209);
+}
+@media screen and (max-width:672px){
+  .level-board{
+    flex-direction: column;
+    align-items: center;
+  }
+  .level1-board,.level2-board,.level3-board{
+    flex:0 1 90%;
+    width:90%;
+  }
+  .top-players{
+    width:100%;
+  }
+}
+
+.player{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(190, 182, 182);
+  margin-bottom: 10px;
+}
+.level-board h1{
+  margin-bottom: 20px;
+  border-bottom:1px solid rgb(44, 121, 209);;
+}
+.LeaderBoard-header h1{
+  color:crimson
+}
+.LeaderBoard-header h1 span{
+  color:rgb(44, 121, 209);
 }
